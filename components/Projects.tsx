@@ -129,15 +129,28 @@ export default function Projects() {
                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-indigo-500/40" />
                   </div>
 
-                  <div className="absolute inset-x-0 bottom-0 top-4 md:top-6">
-                    <Image
-                      src={activeProject.image}
-                      alt={activeProject.title}
-                      fill
-                      className="object-cover"
-                      priority
-                      referrerPolicy="no-referrer"
-                    />
+                  <div className="absolute inset-x-0 bottom-0 top-4 md:top-6 overflow-hidden">
+                    {activeProject.image ? (
+                      <Image
+                        src={activeProject.image}
+                        alt={activeProject.title}
+                        fill
+                        className="object-cover"
+                        priority
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-indigo-950/80 to-zinc-900 flex items-center justify-center p-6 text-center select-none">
+                        <div className="space-y-2">
+                          <span className="block text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                            {activeProject.title}
+                          </span>
+                          <span className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                            {activeProject.subtitle}
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -152,13 +165,21 @@ export default function Projects() {
                   <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-zinc-800 rounded-full z-10" />
 
                   <div className="relative h-full w-full">
-                    <Image
-                      src={activeProject.image}
-                      alt={`${activeProject.title} mobile`}
-                      fill
-                      className="object-cover"
-                      referrerPolicy="no-referrer"
-                    />
+                    {activeProject.image ? (
+                      <Image
+                        src={activeProject.image}
+                        alt={`${activeProject.title} mobile`}
+                        fill
+                        className="object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-indigo-950/90 to-zinc-950 flex items-center justify-center p-3 text-center select-none">
+                        <span className="text-xs md:text-sm font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent break-words max-w-[85%]">
+                          {activeProject.title}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
 
@@ -186,7 +207,7 @@ export default function Projects() {
           </AnimatePresence>
 
           {/* Thumbnail Navigation Bar */}
-          <div className="mt-12 flex justify-center gap-3 overflow-x-auto pb-6 scrollbar-hide">
+          <div className="mt-12 flex justify-start sm:justify-center gap-3 overflow-x-auto pb-6 scrollbar-hide px-6 sm:px-0">
             {portfolioData.projects.map((project, i) => (
               <button
                 key={i}
@@ -194,14 +215,26 @@ export default function Projects() {
                 className={`group relative flex-shrink-0 w-24 md:w-32 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 ${activeIndex === i ? 'border-indigo-500 ring-4 ring-indigo-500/10' : 'border-zinc-800 grayscale hover:grayscale-0 hover:border-zinc-700'
                   }`}
               >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
+                {project.image ? (
+                  <>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Dark gradient to guarantee high text contrast for project numbers */}
+                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+                  </>
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center p-2 text-center select-none">
+                    <span className="text-[8px] md:text-[10px] font-bold tracking-tight text-zinc-400 group-hover:text-white transition-colors break-words max-w-[90%]">
+                      {project.title}
+                    </span>
+                  </div>
+                )}
                 <div className={`absolute inset-0 bg-indigo-500/10 transition-opacity duration-300 ${activeIndex === i ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
-                <div className="absolute bottom-1 left-2 text-[8px] font-bold text-white uppercase tracking-tighter drop-shadow-md">0{i + 1}</div>
+                <div className="absolute bottom-1 left-2 text-[8px] font-bold text-white uppercase tracking-tighter drop-shadow-md z-10">0{i + 1}</div>
               </button>
             ))}
           </div>

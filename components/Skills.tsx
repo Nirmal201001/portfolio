@@ -57,7 +57,14 @@ export default function Skills() {
             {portfolioData.skills.map((category) => (
               <button
                 key={category.category}
-                onClick={() => setActiveCategory(activeCategory === category.category ? null : category.category)}
+                onClick={() => {
+                  if (activeCategory === category.category) {
+                    setActiveCategory(null);
+                    setHoveredCategory(null);
+                  } else {
+                    setActiveCategory(category.category);
+                  }
+                }}
                 onMouseEnter={() => setHoveredCategory(category.category)}
                 onMouseLeave={() => setHoveredCategory(null)}
                 className={`group relative px-4 py-2 rounded-full text-[11px] font-bold transition-all duration-300 border ${currentHighlight === category.category

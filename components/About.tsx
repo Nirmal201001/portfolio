@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { User, Code, Rocket, Target, Heart, Cpu, Globe, Server, ChevronRight, Download } from 'lucide-react';
 import { portfolioData } from '@/lib/data';
@@ -51,6 +52,12 @@ const PARTICLE_COUNT = 24;
 // ─── Component ─────────────────────────────────────────────────────────────
 
 export default function About() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
@@ -62,7 +69,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-zinc-950 overflow-hidden relative">
+    <section id="about" className="py-16 md:py-24 bg-zinc-950 overflow-hidden relative">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-indigo-500/5 rounded-full blur-[120px] -z-10" />
 
@@ -72,7 +79,7 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid md:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-16 lg:gap-20 items-center"
+          className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-16 lg:gap-20 items-center"
         >
           {/* ── Left Column: Content ── */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -81,10 +88,10 @@ export default function About() {
                 <User size={16} />
                 <span>About Me</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-6 leading-[1.1] md:leading-[1.1] text-center md:text-left">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-6 leading-[1.1] md:leading-[1.1] text-center md:text-left">
                 Passionate about building <span className="text-indigo-500">impactful</span> digital experiences.
               </h2>
-              <div className="text-zinc-400 text-base sm:text-lg leading-[1.75] max-w-[480px] md:max-w-[520px] mx-auto md:mx-0 mb-0 md:mb-8 text-center md:text-left">
+              <div className="text-zinc-400 text-base sm:text-lg leading-[1.75] max-w-[480px] md:max-w-[520px] mx-auto md:mx-0 mb-6 md:mb-8 text-center md:text-left">
                 <p>{portfolioData.about}</p>
               </div>
             </motion.div>
@@ -93,10 +100,10 @@ export default function About() {
           {/* ── Right Column: Orbit Animation ── */}
           <motion.div
             variants={itemVariants}
-            className="relative flex items-center justify-center md:justify-end h-[240px] sm:h-[300px] md:h-auto md:min-h-[400px] lg:min-h-[450px]"
+            className="relative flex items-center justify-center md:justify-end h-[300px] min-[360px]:h-[330px] min-[400px]:h-[360px] sm:h-[380px] md:h-auto md:min-h-[400px] lg:min-h-[450px]"
           >
-            {/* Scale-down wrapper to reduce overall size by 20-25% on tablet & desktop, and fit mobile */}
-            <div className="relative w-[400px] h-[400px] flex items-center justify-center scale-[0.55] sm:scale-[0.7] md:scale-[0.75] lg:scale-[0.8] xl:scale-100 origin-center md:origin-right">
+            {mounted && (
+              <div className="absolute w-[400px] h-[400px] flex items-center justify-center scale-[0.68] min-[360px]:scale-[0.75] min-[400px]:scale-[0.82] sm:scale-[0.88] md:scale-[0.8] lg:scale-[0.9] xl:scale-100 origin-center md:origin-right">
               {/* Ambient background glows */}
               <div className="absolute w-64 h-64 rounded-full bg-indigo-500/10 blur-[80px] animate-pulse" />
               <div className="absolute w-48 h-48 rounded-full bg-blue-500/10 blur-[60px]"
@@ -108,7 +115,7 @@ export default function About() {
                 return (
                   <div
                     key={ring.size}
-                    className="absolute rounded-full border border-zinc-800/15"
+                    className="absolute rounded-full border border-zinc-800/30 md:border-zinc-800/15"
                     style={{ width: ring.size, height: ring.size }}
                   >
                     {/* Rotating wrapper */}
@@ -125,13 +132,13 @@ export default function About() {
                         return (
                           <motion.div
                             key={icon.label}
-                            className="absolute w-11 h-11 rounded-xl flex items-center justify-center text-[10px] font-bold shadow-lg border border-white/5 cursor-default select-none transition-all opacity-60 hover:opacity-100"
+                            className="absolute w-11 h-11 rounded-xl flex items-center justify-center text-[10px] font-bold shadow-lg border border-white/5 cursor-default select-none transition-all opacity-85 md:opacity-60 hover:opacity-100"
                             style={{
                               left: x,
                               top: y,
                               background: icon.bg,
                               color: icon.color,
-                              boxShadow: `0 0 8px ${icon.color}11`,
+                              boxShadow: `0 0 10px ${icon.color}18`,
                             }}
                             // Counter-rotate so badge text stays upright
                             animate={{ rotate: isClockwise ? -360 : 360 }}
@@ -202,7 +209,8 @@ export default function About() {
                 </motion.div>
               </div>
             </div>
-          </motion.div>
+          )}
+        </motion.div>
         </motion.div>
 
         {/* Bottom stacked section: Cards & Badges */}
@@ -217,7 +225,7 @@ export default function About() {
           <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             <motion.div
               variants={itemVariants}
-              className="p-7 rounded-3xl bg-zinc-900/40 border border-zinc-800/50 hover:border-indigo-500/30 transition-all hover:bg-zinc-900/60 group flex flex-col justify-between"
+              className="p-6 sm:p-7 rounded-3xl bg-zinc-900/40 border border-zinc-800/50 hover:border-indigo-500/30 transition-all hover:bg-zinc-900/60 group flex flex-col justify-between"
             >
               <div>
                 <div className="text-indigo-500 mb-5 p-3 rounded-2xl bg-indigo-500/10 w-fit group-hover:scale-110 transition-transform">
@@ -230,7 +238,7 @@ export default function About() {
 
             <motion.div
               variants={itemVariants}
-              className="p-7 rounded-3xl bg-zinc-900/40 border border-zinc-800/50 hover:border-blue-500/30 transition-all hover:bg-zinc-900/60 group flex flex-col justify-between"
+              className="p-6 sm:p-7 rounded-3xl bg-zinc-900/40 border border-zinc-800/50 hover:border-blue-500/30 transition-all hover:bg-zinc-900/60 group flex flex-col justify-between"
             >
               <div>
                 <div className="text-blue-500 mb-5 p-3 rounded-2xl bg-blue-500/10 w-fit group-hover:scale-110 transition-transform">

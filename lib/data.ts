@@ -54,7 +54,6 @@ export const portfolioData = {
       tech: ["Next.js", "FastAPI", "PostgreSQL", "OpenAI", "Deepgram", "Azure"],
       description: "Developed responsive and reusable UI components for healthcare workflows, dashboards, and appointment management. Optimized application performance and SEO using Next.js rendering strategies.",
       longDescription: "ValeneHealth is a comprehensive healthcare management platform designed to streamline patient-doctor interactions. I led the frontend development using Next.js, implementing complex scheduling algorithms and secure patient data handling. The platform supports real-time updates via WebSockets and features a highly accessible UI for diverse user groups.",
-      image: "https://picsum.photos/seed/valene/800/600",
       githubUrl: ""
     },
     {
@@ -63,7 +62,6 @@ export const portfolioData = {
       tech: ["React.js", "Node.js", "MongoDB", "AWS S3", "AWS Cognito", "GetStream.io"],
       description: "Worked as a full-stack engineer delivering core modules including product workflows, checkout systems, and livestreaming UI. Built scalable backend services using Node.js following microservice principles.",
       longDescription: "Plutopal combines traditional e-commerce with modern livestreaming capabilities. I implemented the real-time chat and notification system using GetStream.io and integrated AWS S3 for high-performance media delivery. The backend was architected using microservices to ensure independent scalability of the streaming and commerce modules.",
-      image: "https://picsum.photos/seed/pluto/800/600",
       githubUrl: ""
     },
     {
@@ -72,7 +70,6 @@ export const portfolioData = {
       tech: ["React.js", "Node.js", "Konva.JS", "PostgreSQL", "AWS S3"],
       description: "Designed and developed a city-wise image management system and built a browser-based image editor allowing users to apply filters, resize, and layer visual elements.",
       longDescription: "Astra is a powerful web-based image editing suite. I utilized Konva.js to build a performant canvas-based editor that supports non-destructive editing, layers, and complex filters. The system manages millions of assets with a highly optimized PostgreSQL schema and serves them globally via AWS S3 and CloudFront.",
-      image: "https://picsum.photos/seed/astra/800/600",
     }
   ],
 
