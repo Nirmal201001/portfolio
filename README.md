@@ -1,7 +1,3 @@
-<div align="center">
-  <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # 🚀 Nirmal Kushwah | Full-Stack Developer Portfolio
 
 A premium, interactive personal portfolio website showcasing the software engineering journey, projects, skills, and certifications of **Nirmal Kushwah**, Software Engineer – Full Stack.
@@ -33,47 +29,6 @@ This codebase leverages a state-of-the-art frontend stack:
 
 ---
 
-## 📂 Project Structure
-
-Below is an overview of the code architecture to help navigate the repository:
-
-```
-├── .env.example              # Template for environment variables (AI Studio / Local run)
-├── eslint.config.mjs         # ESLint layout configuration
-├── next.config.ts            # Next.js configurations
-├── package.json              # App dependencies & scripts
-├── postcss.config.mjs        # PostCSS setup for Tailwind CSS v4
-├── tsconfig.json             # TypeScript compiler rules
-│
-├── app/                      # Next.js App Router root
-│   ├── favicon.ico           # Website favicon
-│   ├── globals.css           # Tailwind v4 import & custom scrollbar base layer
-│   ├── layout.tsx            # Global HTML shell and metadata configurations
-│   └── page.tsx              # Main entry page containing single-page components
-│
-├── assets/images/            # High-resolution screenshots and portfolio visuals
-│   ├── focus-power.png       # Focus Power project banner image
-│   └── portfolio-logo.png    # Brand branding logo
-│
-├── components/               # Modular UI Components
-│   ├── Navbar.tsx            # Floating sticky navigation bar with active state tracking
-│   ├── Hero.tsx              # Splash header containing bio summary, tech badges, and download resume
-│   ├── About.tsx             # Professional overview, engineering philosophy, and future goals
-│   ├── Experience.tsx        # Timeline of professional experience (Citrusbug Technolabs)
-│   ├── Projects.tsx          # Filtering project catalog showing project details and link integrations
-│   ├── Skills.tsx            # Categorized tech badges with grid layouts and hover animations
-│   ├── Certifications.tsx    # List of verified credentials (AWS badges, NoSQL certificates)
-│   ├── Footer.tsx            # Section footer containing social networks and quick-links
-│   └── icons/
-│       └── SkillIcon.tsx     # Helper component to map icon names to Simple Icons SVGs
-│
-└── lib/                      # Business Logic & Shared Data
-    ├── data.ts               # Hardcoded portfolio content objects (experience, projects, skills, education)
-    └── utils.ts              # Global helper functions (e.g., classname merging with cn)
-```
-
----
-
 ## 💼 Portfolio Content Overview
 
 The portfolio showcases the professional career and technical accomplishments of **Nirmal Kushwah**:
@@ -95,19 +50,7 @@ The portfolio showcases the professional career and technical accomplishments of
 
 ### 📋 Prerequisites
 
-To run this project locally, ensure you have **Node.js** (v18.x or higher recommended) and **npm** installed on your system.
-
-### ⚙️ Environment Configuration
-
-1. Create a `.env.local` file in the root directory:
-   ```bash
-   cp .env.example .env.local
-   ```
-2. Populate the required environment variables:
-   ```env
-   GEMINI_API_KEY="your_gemini_api_key"
-   APP_URL="http://localhost:3000"
-   ```
+To run this project locally, ensure you have **Node.js** (v20.x or higher recommended) and **npm** installed on your system.
 
 ### 💻 Local Run Commands
 
@@ -132,10 +75,6 @@ To run this project locally, ensure you have **Node.js** (v18.x or higher recomm
 5. **Lint checks:**
    ```bash
    npm run lint
-   ```
-6. **Clean cache directories:**
-   ```bash
-   npm run clean
    ```
 
 ---
